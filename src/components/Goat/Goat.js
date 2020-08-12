@@ -7,6 +7,7 @@ class Goat extends React.Component {
   static propTypes = {
     goat: goatShape.goatShape,
     takeAGoat: PropTypes.func,
+    freeAGoat: PropTypes.func,
   }
 
   takeGoatEvent = (e) => {
@@ -15,10 +16,14 @@ class Goat extends React.Component {
     takeAGoat(goat.id);
   }
 
+  freeGoatEvent = (e) => {
+    e.preventDefault();
+    const { goat, freeAGoat } = this.props;
+    freeAGoat(goat.id);
+  }
+
   render() {
     const { goat } = this.props;
-
-    // (false) ? 'return this if true' : 'return this'
 
     return (
       <div className="card">
@@ -30,7 +35,7 @@ class Goat extends React.Component {
         <div className="card-footer">
           {
             goat.isBusy ? (
-              <button>FREE THE GOAT</button>
+              <button onClick={this.freeGoatEvent}>FREE THE GOAT</button>
             ) : (
               <button onClick={this.takeGoatEvent}>TAKE THE GOAT</button>
             )

@@ -51,4 +51,12 @@ const takeGoat = (goatId) => {
   });
 };
 
-export default { getGoats, takeGoat };
+const freeGoat = (goatId) => {
+  goats.forEach((response) => {
+    if (response.id === goatId) {
+      response.isBusy = false;
+    }
+  });
+};
+
+export default { getGoats, takeGoat, freeGoat };
