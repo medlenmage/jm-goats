@@ -6,12 +6,13 @@ import goatShape from '../../helpers/propz/goatShape';
 class GoatCorral extends React.Component {
   static propTypes = {
     goats: PropTypes.arrayOf(goatShape.goatShape),
-  };
+    takeAGoat: PropTypes.func,
+  }
 
   render() {
-    const { goats } = this.props;
+    const { goats, takeAGoat } = this.props;
 
-    const goatCards = goats.map((goat) => (<Goat key={goat.id} goat={goat}/>));
+    const goatCards = goats.map((goat) => (<Goat key={goat.id} goat={goat} takeAGoat={takeAGoat}/>));
 
     return (
       <div>

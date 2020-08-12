@@ -43,4 +43,12 @@ const goats = [
 
 const getGoats = () => goats;
 
-export default { getGoats };
+const takeGoat = (goatId) => {
+  goats.forEach((response) => {
+    if (response.id === goatId) {
+      response.isBusy = true;
+    }
+  });
+};
+
+export default { getGoats, takeGoat };
